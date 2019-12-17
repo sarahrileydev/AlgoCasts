@@ -21,7 +21,13 @@ class LinkedList {
 
   size() {
     // 	Returns the number of nodes in the linked list.
-    
+    let counter = 0;
+    let node = this.head;
+
+    while (node) {
+      node = node.next;
+    }
+    return counter;
   }
 }
 
