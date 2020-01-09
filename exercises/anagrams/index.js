@@ -8,29 +8,51 @@
 //   anagrams('RAIL! SAFETY!', 'fairy tales') --> True
 //   anagrams('Hi there', 'Bye there') --> False
 
+// Solution #1
+// function anagrams(stringA, stringB) {
+//   let aCharMap = buildCharMaps(stringA);
+//   let bCharMap = buildCharMaps(stringB);
+
+//   if (Object.keys(aCharMap).length !== Object.keys(bCharMap).length) {
+//     return false;
+//   }
+//   for (let i in aCharMap) {
+//     if (aCharMap[i] !== bCharMap[i]) {
+//       return false;
+//     }
+//   }
+//   return true;
+// }
+
+// function buildCharMaps(str) {
+//   let charMap = {};
+//   let cleanString = str.replace(/[^\w]/g, "").toLowerCase();
+
+//   for (let char of cleanString) {
+//     charMap[char] = +1 || 1;
+//   }
+//   return charMap;
+// }
+
 function anagrams(stringA, stringB) {
-  let aCharMap = buildCharMaps(stringA);
-  let bCharMap = buildCharMaps(stringB);
+  // let strA = sort(stringA);
+  // let strB = sort(stringB);
 
-  if (Object.keys(aCharMap).length !== Object.keys(bCharMap).length) {
-    return false;
-  }
-  for (let i in aCharMap) {
-    if (aCharMap[i] !== bCharMap[i]) {
-      return false;
-    }
-  }
-  return true;
+  // if (strA === strB) {
+  //   return true;
+  // }
+  // return false;
+
+  return sort(stringA) === sort(stringB);
 }
 
-function buildCharMaps(str) {
-  let charMap = {};
+function sort(str) {
   let cleanString = str.replace(/[^\w]/g, "").toLowerCase();
-
-  for (let char of cleanString) {
-    charMap[char] = +1 || 1;
-  }
-  return charMap;
+  return cleanString
+    .split("")
+    .sort()
+    .join("");
 }
 
+anagrams("abcc", "abc");
 module.exports = anagrams;
